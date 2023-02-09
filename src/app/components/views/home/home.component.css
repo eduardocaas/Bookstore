@@ -1,0 +1,22 @@
+.home {
+  width: 95%;
+  margin: 2rem auto;
+  background-color: rgb(63, 63, 63);
+  color: rgb(216, 216, 216);
+}
+
+mat-card-subtitle {
+  color: rgb(153, 153, 153);
+}
+
+@media(max-width: 450px) {
+  .home {
+    width: 70%;
+  }
+}
+
+@media(max-width: 770px) {
+  .home {
+    width: 90%;
+  }
+}

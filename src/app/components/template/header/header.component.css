@@ -1,6 +1,7 @@
 .header {
   justify-content: center;
   height: 10%;
+  background-color: rgb(83, 83, 83);
 }
 
 span {
@@ -14,6 +15,7 @@ h1 {
   padding-right: 1.2rem;
   font-size: 1.4rem;
   font-family: 'Merriweather', serif;
+  color: rgb(216, 216, 216);
 }
 
 img {

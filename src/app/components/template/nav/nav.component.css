@@ -1,0 +1,19 @@
+.container {
+   height: 85%;
+   background-color: rgb(49, 49, 49);
+}
+
+.box {
+  background-color: rgb(63, 63, 63);
+}
+
+i {
+  padding-right: .4rem;
+  color: rgb(216, 216, 216);
+  vertical-align: middle;
+}
+
+span {
+  color: rgb(216, 216, 216);
+  padding-bottom: 5px;
+}
