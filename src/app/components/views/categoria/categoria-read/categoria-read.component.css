@@ -1,0 +1,23 @@
+.white {
+  color: white;
+}
+
+.content {
+  width: 90%;
+  margin: 1.4rem auto;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 3rem;
+  margin-right: 10.5rem;
+}
+
+.title h1 {
+  font-size: 2rem;
+  font-weight: 100;
+}
+
+.table {
+  background-color: rgb(216, 216, 216);
+}
