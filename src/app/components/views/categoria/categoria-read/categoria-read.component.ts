@@ -15,7 +15,7 @@ export class CategoriaReadComponent implements OnInit {
   categorias: Categoria[] = [];
   data = new MatTableDataSource<Categoria>(this.categorias);
 
-  colunas: string[] = ['id', 'nome', 'descricao', 'acoes'];
+  colunas: string[] = ['id', 'nome', 'descricao', 'livros', 'acoes'];
 
   constructor(private service: CategoriaService) { }
 
@@ -25,7 +25,6 @@ export class CategoriaReadComponent implements OnInit {
 
   findAll() {
     this.service.findAll().subscribe(resposta => {
-      console.log("resposta");
       this.categorias = resposta;
 
     })
