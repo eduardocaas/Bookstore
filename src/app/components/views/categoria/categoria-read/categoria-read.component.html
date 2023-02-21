@@ -1,28 +1,38 @@
 <div class="content">
-  <div class="title white">
+  <div class="title gray">
     <h1>Categorias</h1>
   </div>
 
-  <table mat-table class="table mat-elevation-z8" [dataSource]="categorias">
-
+  <button mat-stroked-button class="mat-elevation-z8">Nova Categoria</button>
+  <table mat-table class="table mat-elevation-z4" [dataSource]="categorias">
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let categoria"> {{categoria.id}} </td>
+      <th class="white" mat-header-cell *matHeaderCellDef> ID </th>
+      <td class="gray" mat-cell *matCellDef="let categoria"> {{categoria.id}} </td>
     </ng-container>
   
     <ng-container matColumnDef="nome">
-      <th mat-header-cell *matHeaderCellDef> Nome </th>
-      <td mat-cell *matCellDef="let categoria"> {{categoria.nome}} </td>
+      <th class="white" mat-header-cell *matHeaderCellDef> Nome </th>
+      <td class="gray" mat-cell *matCellDef="let categoria"> {{categoria.nome}} </td>
     </ng-container>
 
     <ng-container matColumnDef="descricao">
-      <th mat-header-cell *matHeaderCellDef> Descrição </th>
-      <td mat-cell *matCellDef="let categoria"> {{categoria.descricao}} </td>
+      <th class="white" mat-header-cell *matHeaderCellDef> Descrição </th>
+      <td class="gray" mat-cell *matCellDef="let categoria"> {{categoria.descricao}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="livros">
+      <th class="white" mat-header-cell *matHeaderCellDef> Livros </th>
+      <td class="acoesColor" mat-cell *matCellDef="let categoria"> 
+        <a class="material-icons livroFlex">auto_stories</a>
+      </td>
     </ng-container>
   
     <ng-container matColumnDef="acoes">
-      <th mat-header-cell *matHeaderCellDef> Ações </th>
-      <td mat-cell *matCellDef="let categoria">   </td>
+      <th class="white" mat-header-cell *matHeaderCellDef> Ações </th>
+      <td class="acoesColor"  mat-cell *matCellDef="let categoria">
+        <a class="material-icons">edit</a>
+        <a class="material-icons">delete_forever</a>
+      </td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="colunas"></tr>
