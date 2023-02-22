@@ -1,1 +1,18 @@
-<p>categoria-create works!</p>
+<form class="mat-elevation-z8">
+  <button mat-stroked-button routerLink="../" color="primary">Retornar</button>
+  <h1>Nova Categoria</h1>
+  <mat-form-field class="form">
+    <mat-label>Nome</mat-label>
+    <input matInput type="text" name="nome" placeholder="Ex. Computação">
+  </mat-form-field>
+  <mat-form-field class="form">
+    <mat-label>Descrição</mat-label>
+    <textarea matInput type="text" name="descricao" placeholder="Ex. Livros de TI"></textarea>
+  </mat-form-field>
+
+  <div class="buttons">
+    <button mat-raised-button color="primary">Criar</button>
+    <button mat-raised-button color="warn">Limpar</button>
+  </div>
+
+</form>
