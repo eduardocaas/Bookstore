@@ -3,7 +3,7 @@
     <h1>Categorias</h1>
   </div>
 
-  <button mat-stroked-button class="mat-elevation-z8">Nova Categoria</button>
+  <button routerLink="create" mat-stroked-button class="mat-elevation-z8">Nova Categoria</button>
   <table mat-table class="table mat-elevation-z4" [dataSource]="categorias">
     <ng-container matColumnDef="id">
       <th class="white" mat-header-cell *matHeaderCellDef> ID </th>
@@ -30,8 +30,8 @@
     <ng-container matColumnDef="acoes">
       <th class="white" mat-header-cell *matHeaderCellDef> Ações </th>
       <td class="acoesColor"  mat-cell *matCellDef="let categoria">
-        <a class="material-icons">edit</a>
-        <a class="material-icons">delete_forever</a>
+        <a class="material-icons edit">edit</a>
+        <a class="material-icons delete">delete_forever</a>
       </td>
     </ng-container>
   

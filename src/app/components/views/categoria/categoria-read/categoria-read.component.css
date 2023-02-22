@@ -32,10 +32,19 @@
 }
 
 .livroFlex {
-  margin-left: .4rem;
+  margin-left: .5rem;
+  color: rgb(236, 215, 119);
 }
 
 button {
   background-color: rgb(216, 216, 216);
   margin-bottom: 1rem;
+}
+
+.edit {
+  color: rgb(132, 165, 226);
+}
+
+.delete {
+  color: rgb(207, 95, 95);
 }
