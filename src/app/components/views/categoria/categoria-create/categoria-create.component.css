@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
 form {
   background-color: rgb(216, 216, 216);
   width: 600px;
@@ -9,12 +11,13 @@ form {
 }
 
 h1 {
-  font-size: 1.4rem;
-  font-weight: 300;
+  font-size: 1.3rem;
+  font-family: 'Montserrat';
+  text-transform: uppercase;
 }
 
 button {
-  margin-bottom: .5rem;
+  margin-bottom: .9rem;
   width: 150px;
 }
 
