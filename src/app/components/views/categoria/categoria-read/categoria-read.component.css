@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+
+
 .white {
   color: rgb(255, 255, 255);
 }
@@ -18,13 +22,14 @@
 .title {
   text-align: center;
   margin-bottom: 3rem;
-  margin-right: 10.5rem;
 }
 
 .title h1 {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 100;
   margin-right: .1rem;
+  font-family: 'Montserrat';
+  letter-spacing: 0.3rem;
 }
 
 .table {
