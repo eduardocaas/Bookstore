@@ -1,19 +1,32 @@
 .container {
-   height: 85%;
-   background-color: rgb(49, 49, 49);
+  height: 85%;
+  background-color: rgb(49, 49, 49);
 }
 
 .box {
-  background-color: rgb(63, 63, 63);
+ background-color: rgb(63, 63, 63);
+ width: 180px;
+}
+
+.list {
+  margin-top: 1rem;
 }
 
 i {
-  padding-right: .4rem;
-  color: rgb(216, 216, 216);
-  vertical-align: middle;
+ padding-right: .6rem;
+ color: rgb(216, 216, 216);
+ vertical-align: bottom;
 }
 
 span {
-  color: rgb(216, 216, 216);
-  padding-bottom: 5px;
+ color: rgb(216, 216, 216);
+ padding-bottom: 5px;
+ font-size: 1.3rem;
+}
+
+.menu {
+	margin: 1.5rem 0 0 5%;
+	color:  rgb(216, 216, 216);
+	background-color: rgb(83, 83, 83);
+  border-radius: 4px;
 }
