@@ -16,6 +16,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
@@ -47,6 +48,7 @@ import { CategoriaCreateComponent } from './components/views/categoria/categoria
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSelectModule,
     HttpClientModule,
     FormsModule
   ],
