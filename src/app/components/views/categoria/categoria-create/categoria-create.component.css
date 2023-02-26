@@ -6,7 +6,7 @@ form {
   margin: 3rem auto;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 1.7rem 1.5rem 1rem 1.5rem ;
   border-radius: .2rem;
 }
 
@@ -28,4 +28,8 @@ button {
 
 textarea {
   max-height: 12rem;
+}
+
+mat-form-field {
+  margin-bottom: .7rem;
 }
