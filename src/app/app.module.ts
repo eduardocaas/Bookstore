@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -49,6 +49,7 @@ import { CategoriaCreateComponent } from './components/views/categoria/categoria
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FormsModule
   ],
