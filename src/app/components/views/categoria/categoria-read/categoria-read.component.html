@@ -30,8 +30,12 @@
     <ng-container matColumnDef="acoes">
       <th class="white" mat-header-cell *matHeaderCellDef> Ações </th>
       <td class="acoesColor"  mat-cell *matCellDef="let categoria">
-        <a class="material-icons edit">edit</a>
-        <a class="material-icons delete">delete_forever</a>
+        <a class="edit">
+          <i class="material-icons">edit</i>
+        </a>
+        <a class="delete" routerLink="delete/{{categoria.id}}">
+          <i class="material-icons">delete_forever</i>
+        </a>
       </td>
     </ng-container>
   
