@@ -8,6 +8,7 @@
     type="text"
     name="nome"
     placeholder="Ex. Computação"
+    [(ngModel)]="categoria.nome"
     [formControl]="nome"
     required>
     <mat-error *ngIf="nome.invalid">{{getErrorMessageNome()}}</mat-error>
@@ -19,14 +20,29 @@
     type="text"
     name="descricao"
     placeholder="Ex. Livros de TI"
+    [(ngModel)]="categoria.descricao"
     [formControl]="descricao"
     required></textarea>
     <mat-error *ngIf="descricao.invalid">{{getErrorMessageDescricao()}}</mat-error>
   </mat-form-field>
 
   <div class="buttons">
-    <button mat-raised-button color="primary">Criar</button>
-    <button mat-raised-button color="warn">Limpar</button>
+
+    <button
+    class="mat-elevation-z2"
+    color="primary"
+    mat-flat-button
+    (click)="create()"
+    [disabled]="!validFields()"
+    >Criar</button>
+    
+    <button
+    class="mat-elevation-z2"
+    color="warn"
+    mat-flat-button
+    (click)="clearFields()"
+    >Limpar</button>
+
   </div>
 
 </form>

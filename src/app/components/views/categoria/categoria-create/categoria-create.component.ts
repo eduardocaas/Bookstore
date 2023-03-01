@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Categoria } from 'src/app/models/categoria';
+import { CategoriaService } from 'src/app/services/categoria.service';
 
 @Component({
   selector: 'app-categoria-create',
@@ -14,9 +17,30 @@ export class CategoriaCreateComponent{
     descricao: ''
   };
 
+  constructor(private toast: ToastrService, private service: CategoriaService, private router: Router) {}
+
   nome: FormControl = new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(50)]);
   descricao: FormControl = new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(300)]);
   
+  create(): void {
+    this.service.create(this.categoria).subscribe(response => {
+      this.toast.success("Categoria " + (this.categoria.nome).toUpperCase() + ' criada com sucesso!', 'Cadastro', {timeOut: 6000});
+      this.router.navigate(['categorias']);
+    }, err => {
+      for(let i = 0; i < err.error.errors.length; i++){
+        this.toast.error(err.error.errors[i].message);
+      }
+    });
+  }
+
+  clearFields(): void {
+    this.categoria.nome = '';
+    this.categoria.descricao = '';
+  }
+
+  validFields(): boolean {
+    return this.nome.valid && this.descricao.valid;
+  }
 
   getErrorMessageNome(){
     if(this.nome.hasError('required')) {
