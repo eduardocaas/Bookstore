@@ -11,6 +11,10 @@ export class CategoriaService {
 
   constructor(private http: HttpClient) { }
 
+  findById(id: String): Observable<Categoria> {
+    return this.http.get<Categoria>(`${environment.baseUrl}/categorias/${id}`);
+  }
+
   findAll():Observable<Categoria[]> {
     return this.http.get<Categoria[]>(`${environment.baseUrl}/categorias`);
   }
