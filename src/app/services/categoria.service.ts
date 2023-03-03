@@ -23,4 +23,8 @@ export class CategoriaService {
     return this.http.post<Categoria>(`${environment.baseUrl}/categorias`, categoria);
   }
 
+  delete(id: String): Observable<void> {
+    return this.http.delete<void>(`${environment.baseUrl}/categorias/${id}`);
+  }
+
 }
