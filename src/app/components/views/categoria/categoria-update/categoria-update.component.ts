@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Categoria } from 'src/app/models/categoria';
 import { CategoriaService } from 'src/app/services/categoria.service';
 
@@ -17,7 +18,7 @@ export class CategoriaUpdateComponent implements OnInit{
     descricao: ''
   }
 
-  constructor (private service: CategoriaService, private route: ActivatedRoute) {}
+  constructor (private service: CategoriaService, private route: ActivatedRoute, private router: Router, private toast: ToastrService) {}
 
   nome: FormControl = new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(50)]);
   descricao: FormControl = new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(300)]);
@@ -31,6 +32,17 @@ export class CategoriaUpdateComponent implements OnInit{
     this.service.findById(this.categoria.id).subscribe((response) => {
       this.categoria.nome = response.nome;
       this.categoria.descricao = response.descricao;
+    });
+  }
+
+  update(): void {
+    this.service.update(this.categoria).subscribe((response) => {
+      this.toast.info('Categoria ' + (this.categoria.nome).toUpperCase() + ' atualizada com sucesso!', 'Atualização', {timeOut: 6000});
+      this.router.navigate(['categorias']);
+    }, err => {
+      for(let i = 0; i < err.error.errors.length; i++){
+        this.toast.error(err.error.errors[i].message);
+      }
     });
   }
 
