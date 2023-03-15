@@ -27,8 +27,13 @@ export class CategoriaCreateComponent{
       this.toast.success("Categoria " + (this.categoria.nome).toUpperCase() + ' criada com sucesso!', 'Cadastro', {timeOut: 6000});
       this.router.navigate(['categorias']);
     }, err => {
-      for(let i = 0; i < err.error.errors.length; i++){
-        this.toast.error(err.error.errors[i].message);
+      if(err.error.erros) {
+        for(let i = 0; i < err.error.errors.length; i++){
+          this.toast.error(err.error.errors[i].message);
+        }
+      }
+      else {
+        this.toast.error(err.error.message, 'Erro', {timeOut: 6000});
       }
     });
   }

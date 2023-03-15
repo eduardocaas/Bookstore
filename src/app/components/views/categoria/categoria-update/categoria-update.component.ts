@@ -40,10 +40,19 @@ export class CategoriaUpdateComponent implements OnInit{
       this.toast.info('Categoria ' + (this.categoria.nome).toUpperCase() + ' atualizada com sucesso!', 'Atualização', {timeOut: 6000});
       this.router.navigate(['categorias']);
     }, err => {
+      if(err.error.erros) {
       for(let i = 0; i < err.error.errors.length; i++){
         this.toast.error(err.error.errors[i].message);
       }
+    }
+    else {
+      this.toast.error(err.error.message, 'Erro', {timeOut: 6000});
+    }
     });
+  }
+
+  validFields(): boolean {
+    return this.nome.valid && this.descricao.valid;
   }
 
   getErrorMessageNome(){
