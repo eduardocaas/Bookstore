@@ -1,0 +1,39 @@
+<div class="content">
+  <div class="title gray">
+    <h1>LIVROS</h1>
+  </div>
+
+  <button routerLink="create" mat-stroked-button class="mat-elevation-z8">Novo Livro</button>
+  <table mat-table class="table mat-elevation-z4" [dataSource]="livros">
+    <ng-container matColumnDef="id">
+      <th class="white" mat-header-cell *matHeaderCellDef> ID </th>
+      <td class="gray" mat-cell *matCellDef="let livro"> {{livro.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="titulo">
+      <th class="white" mat-header-cell *matHeaderCellDef> Título </th>
+      <td class="gray" mat-cell *matCellDef="let livro"> {{livro.titulo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ler_livro">
+      <th class="white alinha" mat-header-cell *matHeaderCellDef> Ler </th>
+      <td class="acoesColor" mat-cell *matCellDef="let livro"> 
+        <a class="livroFlex"><i class="material-icons">visibility</i></a>
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="acoes">
+      <th class="white alinha" mat-header-cell *matHeaderCellDef> Ações </th>
+      <td class="acoesColor"  mat-cell *matCellDef="let categoria">
+        <a class="edit" routerLink="update/{{categoria.id}}">
+          <i class="material-icons">edit</i>
+        </a>
+        <a class="delete" routerLink="delete/{{categoria.id}}">
+          <i class="material-icons">delete_forever</i>
+        </a>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+  </table>
