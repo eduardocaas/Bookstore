@@ -23,7 +23,7 @@
     <ng-container matColumnDef="livros">
       <th class="white" mat-header-cell *matHeaderCellDef> Livros </th>
       <td class="acoesColor" mat-cell *matCellDef="let categoria"> 
-        <a class="material-icons livroFlex">auto_stories</a>
+        <a class="livroFlex" routerLink="{{ categoria.id }}/livros"><i class="material-icons">auto_stories</i></a>
       </td>
     </ng-container>
   
