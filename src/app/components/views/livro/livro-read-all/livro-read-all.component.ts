@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Livro } from 'src/app/models/livro';
@@ -14,9 +15,10 @@ export class LivroReadAllComponent implements OnInit {
   id_cat: any = '';
 
   livros: Livro[] = [];
+  colunas: string[] = ['id', 'titulo', 'ler_livro', 'acoes'];
   data = new MatTableDataSource<Livro>(this.livros);
 
-  colunas: string[] = ['id', 'titulo', 'ler_livro', 'acoes'];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private service: LivroService, private route: ActivatedRoute) {}
 
@@ -28,6 +30,8 @@ export class LivroReadAllComponent implements OnInit {
   findAll(): void {
     this.service.findAllCategoria(this.id_cat).subscribe(response => {
       this.livros = response;
+      this.data = new MatTableDataSource<Livro>(response);
+      this.data.paginator = this.paginator;
     });
   }
 

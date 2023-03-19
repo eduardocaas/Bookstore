@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatPaginatorModule} from '@angular/material/paginator'; 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
@@ -48,6 +49,7 @@ import { LivroCreateComponent } from './components/views/livro/livro-create/livr
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatPaginatorModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
@@ -58,6 +60,7 @@ import { LivroCreateComponent } from './components/views/livro/livro-create/livr
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
+
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot({
