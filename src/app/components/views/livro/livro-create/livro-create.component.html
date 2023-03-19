@@ -1,50 +1,61 @@
-<form class="mat-elevation-z8">
+<form  class="mat-elevation-z8">
   <button mat-stroked-button routerLink="../" color="primary">Retornar</button>
   <h1>Novo Livro</h1>
+
   <mat-form-field class="form">
     <mat-label>Título</mat-label>
     <input
     matInput
+    [(ngModel)]="livro.titulo"
+    [formControl]="titulo"
     type="text"
     name="titulo"
     placeholder="Ex. Código Limpo"
     required>
+    <mat-error *ngIf="titulo.invalid">{{getErrorMessageTitulo()}}</mat-error>
   </mat-form-field>
 
   <mat-form-field class="form">
     <mat-label>Nome do Autor</mat-label>
     <input
     matInput
+    [(ngModel)]="livro.nome_autor"
+    [formControl]="nome_autor"
     type="text"
     name="nome_autor"
     placeholder="Ex. Robert Martin"
     required>
+    <mat-error *ngIf="nome_autor.invalid">{{getErrorMessageAutor()}}</mat-error>
   </mat-form-field>
-  <mat-form-field class="form">
 
-    <mat-label>Texto</mat-label>
+  <mat-form-field class="form">
+    <mat-label>Descrição</mat-label>
     <textarea
     matInput
+    [(ngModel)]="livro.texto"
+    [formControl]="texto"
     type="text"
     name="texto"
     placeholder="Ex. Lorem Ipsum"
     required></textarea>
+    <mat-error *ngIf="texto.invalid">{{getErrorMessageTexto()}}</mat-error>
   </mat-form-field>
 
   <div class="buttons">
-
     <button
+    [disabled]="!validFields()"
+    (click)="create()"
     class="mat-elevation-z2"
     color="primary"
     mat-flat-button
     >Criar</button>
     
     <button
+    (click)="clearFields()"
     class="mat-elevation-z2"
     color="warn"
     mat-flat-button
     >Limpar</button>
-
   </div>
 
 </form>
