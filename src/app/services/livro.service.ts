@@ -14,4 +14,9 @@ export class LivroService {
   findAllCategoria(id_cat: any): Observable<Livro[]> {
     return this.http.get<Livro[]>(`${environment.baseUrl}/livros/categoria/${id_cat}`);
   }
+
+  create(livro: Livro, id_cat: Number): Observable<Livro> {
+    return this.http.post<Livro>(`${environment.baseUrl}/livros?categoria=${id_cat}`, livro);
+  }
+
 }
