@@ -10,7 +10,7 @@ import { CategoriaService } from 'src/app/services/categoria.service';
   templateUrl: './categoria-create.component.html',
   styleUrls: ['./categoria-create.component.css']
 })
-export class CategoriaCreateComponent{
+export class CategoriaCreateComponent {
 
   categoria: Categoria = {
     nome: '',
@@ -65,10 +65,10 @@ export class CategoriaCreateComponent{
       return 'Você deve informar uma descriçao';
     }
     if(this.descricao.hasError('minlength')){
-      return 'O descrição deve ter no mínimo 2 caracteres';
+      return 'A descrição deve ter no mínimo 2 caracteres';
     }
     if(this.descricao.hasError('maxlength')){
-      return 'O descrição deve ter no máximo 300 caracteres';
+      return 'A descrição deve ter no máximo 300 caracteres';
     }
     return null;
   }
