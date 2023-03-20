@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Livro } from 'src/app/models/livro';
+import { LivroService } from 'src/app/services/livro.service';
 
 @Component({
   selector: 'app-livro-delete',
@@ -18,7 +19,7 @@ export class LivroDeleteComponent implements OnInit {
     texto: ''
   }
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private service: LivroService) {}
 
   ngOnInit(): void {
     this.id_cat = this.route.snapshot.paramMap.get('id_cat');
