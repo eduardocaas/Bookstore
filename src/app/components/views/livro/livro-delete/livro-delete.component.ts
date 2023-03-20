@@ -22,6 +22,16 @@ export class LivroDeleteComponent implements OnInit {
   constructor(private route: ActivatedRoute, private service: LivroService) {}
 
   ngOnInit(): void {
+    this.livro.id = this.route.snapshot.paramMap.get('id');
     this.id_cat = this.route.snapshot.paramMap.get('id_cat');
+    this.findById();
+  }
+
+  findById(): void {
+    this.service.findById(this.livro.id).subscribe(response => {
+      this.livro.titulo = response.titulo;
+      this.livro.nome_autor = response.nome_autor;
+      this.livro.texto = response.texto;
+    });
   }
 }
