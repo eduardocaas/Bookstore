@@ -1,0 +1,45 @@
+<form  class="mat-elevation-z8">
+  <button mat-stroked-button routerLink="../" color="primary">Retornar</button>
+  <h1>Novo Livro</h1>
+
+  <mat-form-field class="form">
+    <mat-label>Título</mat-label>
+    <input
+    matInput
+    [(ngModel)]="livro.titulo"
+    type="text"
+    name="titulo"
+    disabled>
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <mat-label>Nome do Autor</mat-label>
+    <input
+    matInput
+    [(ngModel)]="livro.nome_autor"
+    type="text"
+    name="nome_autor"
+    disabled>
+    
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <mat-label>Descrição</mat-label>
+    <textarea
+    matInput
+    [(ngModel)]="livro.texto"
+    type="text"
+    name="texto"
+    disabled></textarea>
+  </mat-form-field>
+
+  <div class="buttons">
+    <button
+    class="mat-elevation-z2"
+    color="warn"
+    mat-flat-button
+    >Deletar</button>
+  </div>
+
+</form>
+
