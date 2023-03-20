@@ -19,4 +19,8 @@ export class LivroService {
     return this.http.post<Livro>(`${environment.baseUrl}/livros?categoria=${id_cat}`, livro);
   }
 
+  findById(id: any): Observable<Livro> {
+    return this.http.get<Livro>(`${environment.baseUrl}/livros/${id}`);
+  }
+
 }
