@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: "categorias/update/:id" , component: CategoriaUpdateComponent},
   {path: "categorias/:id_cat/livros", component: LivroReadAllComponent},
   {path: "categorias/:id_cat/livros/create", component: LivroCreateComponent},
-  {path: "livros/delete/:id", component: LivroDeleteComponent}
+  {path: "livros/delete/:id_cat/:id", component: LivroDeleteComponent}
   ]
   }
 ];
