@@ -23,4 +23,8 @@ export class LivroService {
     return this.http.get<Livro>(`${environment.baseUrl}/livros/${id}`);
   }
 
+  delete(id: any): Observable<void> {
+    return this.http.delete<void>(`${environment.baseUrl}/livros/${id}`);
+  }
+
 }
