@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Livro } from 'src/app/models/livro';
 import { LivroService } from 'src/app/services/livro.service';
 
@@ -19,7 +20,7 @@ export class LivroDeleteComponent implements OnInit {
     texto: ''
   }
 
-  constructor(private route: ActivatedRoute, private service: LivroService) {}
+  constructor(private route: ActivatedRoute, private service: LivroService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.livro.id = this.route.snapshot.paramMap.get('id');
@@ -34,4 +35,14 @@ export class LivroDeleteComponent implements OnInit {
       this.livro.texto = response.texto;
     });
   }
+
+  delete(): void {
+    this.service.delete(this.livro.id).subscribe(response => {
+      this.router.navigate(['categorias/' + this.id_cat + '/livros']);
+      this.toastr.warning('Livro ' + (this.livro.titulo).toUpperCase() + ' removido com sucesso', 'Remoção' , {timeOut: 6000});
+    }, err => {
+      this.toastr.error(err.error.error, 'Erro', {timeOut: 6000});
+    });
+  }
+
 }
