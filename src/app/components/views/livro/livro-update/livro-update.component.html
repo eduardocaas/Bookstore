@@ -12,6 +12,7 @@
     name="titulo"
     placeholder="Ex. Código Limpo"
     required>
+    <mat-error *ngIf="titulo.invalid">{{getErrorMessageTitulo()}}</mat-error>
   </mat-form-field>
 
   <mat-form-field class="form">
