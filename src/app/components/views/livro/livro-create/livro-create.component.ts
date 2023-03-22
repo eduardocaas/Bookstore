@@ -62,9 +62,10 @@ export class LivroCreateComponent implements OnInit{
   }
 
   validFields(): boolean {
-    return this.titulo.valid && this.nome_autor.valid && this.texto.valid && 
-    (this.titulo.value.length >= 2) && (this.nome_autor.value.length >= 2) && (this.texto.value.length >= 2);
-  } 
+    return (this.titulo.valid && this.titulo.value.length >= 2 && this.titulo.value.length <= 50) && 
+           (this.nome_autor.valid && this.nome_autor.value.length >= 2 && this.nome_autor.value.length <= 50) &&
+           (this.texto.valid && this.texto.value.length >= 2 && this.texto.value.length <= 1000);
+  }
 
   getErrorMessageTitulo() {
     if(this.titulo.hasError('required')){
