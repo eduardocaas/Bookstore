@@ -25,7 +25,7 @@
     <ng-container matColumnDef="acoes">
       <th class="white alinha" mat-header-cell *matHeaderCellDef> Ações </th>
       <td class="acoesColor"  mat-cell *matCellDef="let livro">
-        <a class="edit">
+        <a class="edit" routerLink="livros/update/{{id_cat}}/{{livro.id}}/../../..">
           <i class="material-icons">edit</i>
         </a>
         <a class="delete" routerLink="livros/delete/{{id_cat}}/{{livro.id}}/../../..">
