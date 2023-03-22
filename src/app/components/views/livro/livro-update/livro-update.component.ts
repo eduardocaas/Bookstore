@@ -61,5 +61,18 @@ export class LivroUpdateComponent implements OnInit{
            (this.autor.valid && this.autor.value.length >= 2 && this.autor.value.length <= 50) &&
            (this.texto.valid && this.texto.value.length >= 2 && this.texto.value.length <= 1000);
   }
+  
+  getErrorMessageTitulo() {
+    if(this.titulo.hasError('required'){
+       return "Você deve informar um título";
+    }
+    if(this.titulo.hasError('minLength'){
+      return "O título deve ter no mínimo 2 caracteres";   
+    }
+    if(this.titulo.hasError('maxLength'){
+       return "O título deve ter no máximo 50 caracteres";
+    }
+    return "Erro";
+  }
 
 }
