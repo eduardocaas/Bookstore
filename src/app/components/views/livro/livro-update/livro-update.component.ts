@@ -9,9 +9,12 @@ import { LivroService } from 'src/app/services/livro.service';
   templateUrl: './livro-update.component.html',
   styleUrls: ['./livro-update.component.css']
 })
+
 export class LivroUpdateComponent implements OnInit{
 
   id_cat: any = '';
+  public clear: boolean = true;
+  public btn = document.getElementById('btn');
 
   livro: Livro = {
     id: '',
@@ -38,6 +41,19 @@ export class LivroUpdateComponent implements OnInit{
       this.livro.nome_autor = response.nome_autor;
       this.livro.texto = response.texto;
     });
+  }
+
+  clearFields(): void {
+    if(this.clear){
+      this.livro.titulo = '';
+      this.livro.nome_autor = '';
+      this.livro.texto = '';
+      this.clear = false;
+    }
+    else{
+      this.findById();
+      this.clear = true;
+    }
   }
 
   validFields(): boolean {
