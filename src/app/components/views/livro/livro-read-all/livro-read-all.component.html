@@ -4,7 +4,7 @@
   </div>
 
   <button routerLink="create" mat-stroked-button class="mat-elevation-z8">Novo Livro</button>
-  <table mat-table class="table mat-elevation-z4" [dataSource]="livros">
+  <table mat-table [dataSource]="dataSource" class="table mat-elevation-z4">
     <ng-container matColumnDef="id">
       <th class="white" mat-header-cell *matHeaderCellDef> ID </th>
       <td class="gray" mat-cell *matCellDef="let livro"> {{livro.id}} </td>
@@ -34,8 +34,8 @@
       </td>
     </ng-container>
   
-    <tr mat-header-row *matHeaderRowDef="colunas"></tr>
-    <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
