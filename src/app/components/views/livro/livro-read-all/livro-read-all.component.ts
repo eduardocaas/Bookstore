@@ -18,6 +18,7 @@ export class LivroReadAllComponent implements OnInit {
   colunas: string[] = ['id', 'titulo', 'ler_livro', 'acoes'];
   data = new MatTableDataSource<Livro>(this.livros);
 
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private service: LivroService, private route: ActivatedRoute) {}
