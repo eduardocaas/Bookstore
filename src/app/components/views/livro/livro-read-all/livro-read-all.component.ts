@@ -14,9 +14,9 @@ export class LivroReadAllComponent implements OnInit {
 
   id_cat: any = '';
 
-  livros: Livro[] = [];
-  colunas: string[] = ['id', 'titulo', 'ler_livro', 'acoes'];
-  data = new MatTableDataSource<Livro>(this.livros);
+  ELEMENT_DATA: Livro[] = [];
+  displayedColumns: string[] = ['id', 'titulo', 'ler_livro', 'acoes'];
+  dataSource = new MatTableDataSource<Livro>(this.ELEMENT_DATA);
 
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,9 +30,9 @@ export class LivroReadAllComponent implements OnInit {
 
   findAll(): void {
     this.service.findAllCategoria(this.id_cat).subscribe(response => {
-      this.livros = response;
-      this.data = new MatTableDataSource<Livro>(response);
-      this.data.paginator = this.paginator;
+      this.ELEMENT_DATA = response;
+      this.dataSource = new MatTableDataSource<Livro>(response);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
