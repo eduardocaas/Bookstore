@@ -55,3 +55,7 @@ button {
 .delete {
   color: rgb(207, 95, 95);
 }
+
+mat-paginator {
+  background-color: #464646;
+}
