@@ -12,6 +12,9 @@ import { CategoriaService } from 'src/app/services/categoria.service';
 })
 export class CategoriaUpdateComponent implements OnInit{
 
+  public clear: boolean = true;
+  btnVal: string = 'Limpar';
+
   categoria: Categoria = {
     id: '',
     nome: '',
@@ -53,6 +56,20 @@ export class CategoriaUpdateComponent implements OnInit{
 
   validFields(): boolean {
     return this.nome.valid && this.descricao.valid;
+  }
+
+  clearFields(): void {
+    if(this.clear){
+      this.categoria.nome = '';
+      this.categoria.descricao = '';
+      this.clear = false;
+      this.btnVal = "Dados";
+    }
+    else{
+      this.findById();
+      this.clear = true;
+      this.btnVal = "Limpar";
+    }
   }
 
   getErrorMessageNome(){

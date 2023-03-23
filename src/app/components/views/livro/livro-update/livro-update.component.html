@@ -25,6 +25,7 @@
     name="nome_autor"
     placeholder="Ex. Robert Martin"
     required>
+    <mat-error *ngIf="autor.invalid">{{getErrorMessageAutor()}}</mat-error>
   </mat-form-field>
 
   <mat-form-field class="form">
@@ -37,6 +38,7 @@
     name="texto"
     placeholder="Ex. Lorem Ipsum"
     required></textarea>
+    <mat-error *ngIf="texto.invalid">{{getErrorMessageTexto()}}</mat-error>
   </mat-form-field>
 
   <div class="buttons">
@@ -53,8 +55,7 @@
     id="btn"
     (click)="clearFields()"
     mat-flat-button
-    >Limpar</button>
+    >{{btnVal}}</button>
   </div>
-
 </form>
 

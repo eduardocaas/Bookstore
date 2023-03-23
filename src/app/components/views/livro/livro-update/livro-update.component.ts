@@ -14,7 +14,7 @@ export class LivroUpdateComponent implements OnInit{
 
   id_cat: any = '';
   public clear: boolean = true;
-  public btn = document.getElementById('btn');
+  btnVal: string = 'Limpar';
 
   livro: Livro = {
     id: '',
@@ -49,10 +49,12 @@ export class LivroUpdateComponent implements OnInit{
       this.livro.nome_autor = '';
       this.livro.texto = '';
       this.clear = false;
+      this.btnVal = "Dados";
     }
     else{
       this.findById();
       this.clear = true;
+      this.btnVal = "Limpar";
     }
   }
 
@@ -63,16 +65,43 @@ export class LivroUpdateComponent implements OnInit{
   }
   
   getErrorMessageTitulo() {
-    if(this.titulo.hasError('required'){
+    if(this.titulo.hasError('required')){
        return "Você deve informar um título";
     }
-    if(this.titulo.hasError('minLength'){
+    if(this.titulo.hasError('minlength')){
       return "O título deve ter no mínimo 2 caracteres";   
     }
-    if(this.titulo.hasError('maxLength'){
-       return "O título deve ter no máximo 50 caracteres";
+    if(this.titulo.hasError('maxlength')){
+      return "O título deve ter no máximo 50 caracteres";
     }
     return "Erro";
   }
+
+  getErrorMessageAutor() {
+    if(this.autor.hasError('required')){
+      return "Você deve informar um nome de autor";
+    }
+    if(this.autor.hasError('minlength')){
+      return "O título deve ter no mínimo 2 caracteres";
+    }
+    if(this.autor.hasError('maxlength')){
+      return "O título deve ter no máximo 50 caracteres";
+    }
+    return "Erro";
+  }
+
+  getErrorMessageTexto() {
+    if(this.texto.hasError('required')){
+      return "Você deve informar uma descrição";
+    }
+    if(this.texto.hasError('minlength')){
+      return "A descrição deve ter no mínimo 2 caracteres";
+    }
+    if(this.texto.hasError('maxlength')){
+      return "A descrição deve ter no máximo 1000 caracteres";
+    }
+    return "Erro";
+  }
+
 
 }
