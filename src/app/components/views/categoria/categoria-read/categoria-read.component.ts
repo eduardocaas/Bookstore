@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Categoria } from 'src/app/models/categoria';
 import { CategoriaService } from 'src/app/services/categoria.service';
@@ -17,6 +18,8 @@ export class CategoriaReadComponent implements OnInit {
 
   colunas: string[] = ['id', 'nome', 'descricao', 'livros', 'acoes'];
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(private service: CategoriaService) { }
 
   ngOnInit(): void {
@@ -24,9 +27,10 @@ export class CategoriaReadComponent implements OnInit {
   }
 
   findAll() {
-    this.service.findAll().subscribe(resposta => {
-      this.categorias = resposta;
-
+    this.service.findAll().subscribe(response => {
+      this.categorias = response;
+      this.data = new MatTableDataSource<Categoria>(response);
+      this.data.paginator = this.paginator;
     })
   }
 
