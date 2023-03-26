@@ -11,6 +11,10 @@ export class LivroService {
 
   constructor(private http: HttpClient) { }
 
+  findById(id: any): Observable<Livro> {
+    return this.http.get<Livro>(`${environment.baseUrl}/livros/${id}`);
+  }
+
   findAllCategoria(id_cat: any): Observable<Livro[]> {
     return this.http.get<Livro[]>(`${environment.baseUrl}/livros/categoria/${id_cat}`);
   }
@@ -19,8 +23,8 @@ export class LivroService {
     return this.http.post<Livro>(`${environment.baseUrl}/livros?categoria=${id_cat}`, livro);
   }
 
-  findById(id: any): Observable<Livro> {
-    return this.http.get<Livro>(`${environment.baseUrl}/livros/${id}`);
+  update(livro: Livro): Observable<Livro> {
+    return this.http.put<Livro>(`${environment.baseUrl}/livros/${livro.id}`, livro);
   }
 
   delete(id: any): Observable<void> {
