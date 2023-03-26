@@ -18,7 +18,7 @@
     <ng-container matColumnDef="ler_livro">
       <th class="white alinha" mat-header-cell *matHeaderCellDef> Ler </th>
       <td class="acoesColor" mat-cell *matCellDef="let livro"> 
-        <a class="livroFlex"><i class="material-icons">visibility</i></a>
+        <a class="livroFlex"><i class="material-icons" (click)="openDialog(livro.id)">visibility</i></a>
       </td>
     </ng-container>
   

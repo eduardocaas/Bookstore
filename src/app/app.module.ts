@@ -19,6 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
@@ -32,6 +33,7 @@ import { LivroReadAllComponent } from './components/views/livro/livro-read-all/l
 import { LivroCreateComponent } from './components/views/livro/livro-create/livro-create.component';
 import { LivroDeleteComponent } from './components/views/livro/livro-delete/livro-delete.component';
 import { LivroUpdateComponent } from './components/views/livro/livro-update/livro-update.component';
+import { LivroDialogComponent } from './components/views/livro/livro-dialog/livro-dialog.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { LivroUpdateComponent } from './components/views/livro/livro-update/livr
     LivroReadAllComponent,
     LivroCreateComponent,
     LivroDeleteComponent,
-    LivroUpdateComponent
+    LivroUpdateComponent,
+    LivroDialogComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,7 @@ import { LivroUpdateComponent } from './components/views/livro/livro-update/livr
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-
+    MatDialogModule,
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot({

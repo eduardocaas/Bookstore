@@ -41,6 +41,7 @@
 .livroFlex {
   margin-left: .5rem;
   color: rgb(236, 215, 119);
+  cursor: pointer;
 }
 
 button {
