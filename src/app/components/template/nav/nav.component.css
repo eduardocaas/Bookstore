@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .container {
   height: 85%;
   background-color: rgb(49, 49, 49);
@@ -25,9 +27,15 @@ span {
 }
 
 .btn {
-  height: 48px;
+  height: 47.9px;
   background-color: rgb(83, 83, 83);
-  margin: 0 0 1rem .5rem;
+  margin: 0 0 16px .5rem;
+  border: none;
+}
+
+p {
+  margin-top: .9rem;
+  color: rgb(216, 216, 216);
 }
 
 
