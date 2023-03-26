@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Livro } from 'src/app/models/livro';
 import { LivroService } from 'src/app/services/livro.service';
 
@@ -23,7 +24,7 @@ export class LivroUpdateComponent implements OnInit{
     texto: ''
   }
 
-  constructor(private route: ActivatedRoute, private service: LivroService) {}
+  constructor(private route: ActivatedRoute, private service: LivroService, private toastr: ToastrService, private router: Router) {}
 
   titulo: FormControl = new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(50)]);
   autor: FormControl = new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(50)]);
@@ -40,6 +41,22 @@ export class LivroUpdateComponent implements OnInit{
       this.livro.titulo = response.titulo;
       this.livro.nome_autor = response.nome_autor;
       this.livro.texto = response.texto;
+    });
+  }
+
+  update(): void {
+    this.service.update(this.livro).subscribe(response =>{
+      this.toastr.success('Livro ' + (this.livro.titulo).toUpperCase() + ' atualizado com sucesso' , 'Atualização', {timeOut: 6000});
+      this.router.navigate(['categorias/' + this.id_cat + '/livros']);
+    }, err => {
+      if(err.error.errors){
+        for(let i = 0; i < err.error.errors.length; i++){
+          this.toastr.error(err.error.errors[i].message, 'Erro', {timeOut: 6000});
+        }
+      }
+      else {
+        this.toastr.error(err.error.message, 'Erro', {timeOut: 6000});
+      }
     });
   }
 
