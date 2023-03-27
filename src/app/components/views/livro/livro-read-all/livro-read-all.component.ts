@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Livro } from 'src/app/models/livro';
 import { LivroService } from 'src/app/services/livro.service';
 import { LivroDialogComponent } from '../livro-dialog/livro-dialog.component';
+import { CategoriaService } from 'src/app/services/categoria.service';
+import { Categoria } from 'src/app/models/categoria';
 
 
 @Component({
@@ -22,6 +24,11 @@ export class LivroReadAllComponent implements OnInit {
     texto: ''
   }
 
+  categoria: Categoria = {
+    nome: '',
+    descricao: ''
+  }
+
   id_cat: any = '';
 
   ELEMENT_DATA: Livro[] = [];
@@ -30,11 +37,18 @@ export class LivroReadAllComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private service: LivroService, private route: ActivatedRoute, public dialog: MatDialog) {}
+  constructor(private service: LivroService, private route: ActivatedRoute, public dialog: MatDialog, private cat_service: CategoriaService) {}
 
   ngOnInit(): void {
     this.id_cat = this.route.snapshot.paramMap.get('id_cat');
     this.findAll();
+    this.findById_cat();
+  }
+
+  findById_cat(): void {
+    this.cat_service.findById(this.id_cat).subscribe(response => {
+      this.categoria.nome = response.nome;
+    })
   }
 
   findAll(): void {
@@ -50,14 +64,14 @@ export class LivroReadAllComponent implements OnInit {
       this.livro.titulo = response.titulo;
       this.livro.nome_autor = response.nome_autor;
       this.livro.texto = response.texto;
+      this.dialog.open(LivroDialogComponent, {
+        data: {
+          titulo: this.livro.titulo,
+          nome_autor: this.livro.nome_autor,
+          texto: this.livro.texto
+        }
+      });
     })
-    this.dialog.open(LivroDialogComponent, {
-      data: {
-        titulo: this.livro.titulo,
-        nome_autor: this.livro.nome_autor,
-        texto: this.livro.texto
-      }
-    });
   }
 
 }
