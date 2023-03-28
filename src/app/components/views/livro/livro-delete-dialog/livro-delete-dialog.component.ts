@@ -13,7 +13,7 @@ export interface DialogData {
 })
 export class LivroDeleteDialogComponent {
 
-  constructor(private dialogRef: MatDialogRef<LivroDeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) private data: DialogData,
+  constructor(public dialogRef: MatDialogRef<LivroDeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData,
               private route: ActivatedRoute, private router: Router) {}
 
   delete(bool: boolean): void {
