@@ -14,6 +14,7 @@ import { LivroDeleteDialogComponent } from '../livro-delete-dialog/livro-delete-
 export class LivroDeleteComponent implements OnInit {
   
   id_cat: any = '';
+  delete_param: any = '';
 
   livro: Livro = {
     id: '',
@@ -48,13 +49,16 @@ export class LivroDeleteComponent implements OnInit {
   }
 
   delete(): void {
-    
-    /*this.service.delete(this.livro.id).subscribe(response => {
+    this.openDialog();
+    this.delete_param = this.route.snapshot.paramMap.get('delete');
+    if(this.delete_param){
+    this.service.delete(this.livro.id).subscribe(response => {
       this.router.navigate(['categorias/' + this.id_cat + '/livros']);
       this.toastr.warning('Livro ' + (this.livro.titulo).toUpperCase() + ' removido com sucesso', 'Remoção' , {timeOut: 6000});
     }, err => {
       this.toastr.error(err.error.error, 'Erro', {timeOut: 6000});
-    });*/
+    });
+  }
   }
 
 }
