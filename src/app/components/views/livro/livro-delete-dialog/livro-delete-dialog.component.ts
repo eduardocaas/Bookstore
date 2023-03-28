@@ -1,5 +1,6 @@
 import { Component, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface DialogData {
   titulo: '';
@@ -12,15 +13,24 @@ export interface DialogData {
 })
 export class LivroDeleteDialogComponent {
 
-  constructor(public dialogRef: MatDialogRef<LivroDeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  constructor(private dialogRef: MatDialogRef<LivroDeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) private data: DialogData,
+              private route: ActivatedRoute, private router: Router) {}
 
   delete(bool: boolean): void {
     if(bool == true){
-      //tentar injetar parametro na url 
+      this.router.navigate(
+        [],
+        {
+          relativeTo: this.route,
+          queryParams: {
+            param: 'teste',
+          },
+          queryParamsHandling: 'merge'
+        }
+      );
     }
     else{
       console.log('teste');
-      
     }
   }
 
