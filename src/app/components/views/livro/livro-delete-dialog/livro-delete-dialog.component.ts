@@ -23,14 +23,23 @@ export class LivroDeleteDialogComponent {
         {
           relativeTo: this.route,
           queryParams: {
-            param: 'teste',
+            delete: 'true',
           },
           queryParamsHandling: 'merge'
         }
       );
     }
     else{
-      console.log('teste');
+      this.router.navigate(
+        [],
+        {
+          relativeTo: this.route,
+          queryParams: {
+            delete: 'false',
+          },
+          queryParamsHandling: 'merge'
+        }
+      );
     }
   }
 
