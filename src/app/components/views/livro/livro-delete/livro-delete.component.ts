@@ -59,6 +59,10 @@ export class LivroDeleteComponent implements OnInit {
       this.toastr.error(err.error.error, 'Erro', {timeOut: 6000});
     });
   }
+  else {
+    console.log(this.delete_param + 'else');
   }
-
+  console.log(this.delete_param + 'fora do if');
+  }
+  
 }
