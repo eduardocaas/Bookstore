@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Livro } from 'src/app/models/livro';
 import { LivroService } from 'src/app/services/livro.service';
+import { LivroDeleteDialogComponent } from '../livro-delete-dialog/livro-delete-dialog.component';
 
 @Component({
   selector: 'app-livro-delete',
@@ -20,7 +22,8 @@ export class LivroDeleteComponent implements OnInit {
     texto: ''
   }
 
-  constructor(private route: ActivatedRoute, private service: LivroService, private router: Router, private toastr: ToastrService) {}
+  constructor(private route: ActivatedRoute, private service: LivroService, 
+              private router: Router, private toastr: ToastrService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.livro.id = this.route.snapshot.paramMap.get('id');
@@ -36,13 +39,22 @@ export class LivroDeleteComponent implements OnInit {
     });
   }
 
+  openDialog(): void {
+    this.dialog.open(LivroDeleteDialogComponent, {
+      data: {
+        titulo: this.livro.titulo,
+      }
+    });
+  }
+
   delete(): void {
-    this.service.delete(this.livro.id).subscribe(response => {
+    
+    /*this.service.delete(this.livro.id).subscribe(response => {
       this.router.navigate(['categorias/' + this.id_cat + '/livros']);
       this.toastr.warning('Livro ' + (this.livro.titulo).toUpperCase() + ' removido com sucesso', 'Remoção' , {timeOut: 6000});
     }, err => {
       this.toastr.error(err.error.error, 'Erro', {timeOut: 6000});
-    });
+    });*/
   }
 
 }
