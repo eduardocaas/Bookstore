@@ -59,7 +59,7 @@ export class LivroDeleteComponent implements OnInit {
   delete(): void {
     this.service.delete(this.livro.id).subscribe(response => {
       this.router.navigate(['categorias/' + this.id_cat + '/livros']);
-      this.toastr.warning('Livro ' + (this.livro.titulo).toUpperCase() + ' removido com sucesso', 'Remoção' , {timeOut: 6000});
+      this.toastr.success('Livro ' + (this.livro.titulo).toUpperCase() + ' removido com sucesso', 'Remoção' , {timeOut: 6000});
     }, err => {
       this.toastr.error(err.error.error, 'Erro', {timeOut: 6000});
     });
