@@ -1,6 +1,6 @@
-import { Component, Inject, Input } from '@angular/core';
+import { DialogRef } from '@angular/cdk/dialog';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
 
 export interface DialogData {
   titulo: '';
@@ -13,34 +13,33 @@ export interface DialogData {
 })
 export class LivroDeleteDialogComponent {
 
-  constructor(public dialogRef: MatDialogRef<LivroDeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData,
-              private route: ActivatedRoute, private router: Router) {}
+  constructor(public dialogRef: MatDialogRef<LivroDeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  delete(bool: boolean): void {
-    if(bool == true){
-      this.router.navigate(
-        [],
-        {
-          relativeTo: this.route,
-          queryParams: {
-            delete: 'true',
-          },
-          queryParamsHandling: 'merge'
-        }
-      );
-    }
-    else{
-      this.router.navigate(
-        [],
-        {
-          relativeTo: this.route,
-          queryParams: {
-            delete: 'false',
-          },
-          queryParamsHandling: 'merge'
-        }
-      );
-    }
-  }
+  // delete(bool: boolean): void { Injeção de paramêtros na URL
+  //   if(bool == true){
+  //     this.router.navigate(
+  //       [],
+  //       {
+  //         relativeTo: this.route,
+  //         queryParams: {
+  //           delete: 'true',
+  //         },
+  //         queryParamsHandling: 'merge'
+  //       }
+  //     );
+  //   }
+  //   else{
+  //     this.router.navigate(
+  //       [],
+  //       {
+  //         relativeTo: this.route,
+  //         queryParams: {
+  //           delete: 'false',
+  //         },
+  //         queryParamsHandling: 'merge'
+  //       }
+  //     );
+  //   }
+  // }
 
 }

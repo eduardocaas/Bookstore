@@ -3,7 +3,7 @@
   Você deseja remover o livro {{(data.titulo).toUpperCase()}}?
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close (click)="delete(false)">Não</button>
-  <button mat-button mat-dialog-close cdkFocusInitial (click)="delete(true)">Sim</button>
+  <button mat-button mat-dialog-close (click)="dialogRef.close(false)">Não</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="dialogRef.close(true)">Sim</button>
 </div>
 

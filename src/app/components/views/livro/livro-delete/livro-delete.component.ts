@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Livro } from 'src/app/models/livro';
@@ -14,8 +14,10 @@ import { LivroDeleteDialogComponent } from '../livro-delete-dialog/livro-delete-
 export class LivroDeleteComponent implements OnInit {
   
   id_cat: any = '';
-  delete_param: any = '';
+  // delete_param: any = '';
 
+  dialogRef: MatDialogRef<LivroDeleteDialogComponent>;
+  
   livro: Livro = {
     id: '',
     titulo: '',
@@ -29,6 +31,7 @@ export class LivroDeleteComponent implements OnInit {
   ngOnInit(): void {
     this.livro.id = this.route.snapshot.paramMap.get('id');
     this.id_cat = this.route.snapshot.paramMap.get('id_cat');
+    //this.delete_param = this.route.snapshot.paramMap.get('delete');
     this.findById();
   }
 
@@ -41,28 +44,25 @@ export class LivroDeleteComponent implements OnInit {
   }
 
   openDialog(): void {
-    this.dialog.open(LivroDeleteDialogComponent, {
+    this.dialogRef = this.dialog.open(LivroDeleteDialogComponent, {
       data: {
         titulo: this.livro.titulo,
+      }
+    });
+    this.dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.delete();
       }
     });
   }
 
   delete(): void {
-    this.openDialog();
-    this.delete_param = this.route.snapshot.paramMap.get('delete');
-    if(this.delete_param == 'true'){
     this.service.delete(this.livro.id).subscribe(response => {
       this.router.navigate(['categorias/' + this.id_cat + '/livros']);
       this.toastr.warning('Livro ' + (this.livro.titulo).toUpperCase() + ' removido com sucesso', 'Remoção' , {timeOut: 6000});
     }, err => {
       this.toastr.error(err.error.error, 'Erro', {timeOut: 6000});
     });
-  }
-  else {
-    console.log(this.delete_param + 'else');
-  }
-  console.log(this.delete_param + 'fora do if');
   }
   
 }
