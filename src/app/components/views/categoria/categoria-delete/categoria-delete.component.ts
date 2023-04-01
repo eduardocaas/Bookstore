@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Categoria } from 'src/app/models/categoria';
 import { CategoriaService } from 'src/app/services/categoria.service';
+import { CategoriaDeleteDialogComponent } from '../categoria-delete-dialog/categoria-delete-dialog.component';
 
 @Component({
   selector: 'app-categoria-delete',
@@ -17,7 +19,10 @@ export class CategoriaDeleteComponent implements OnInit {
     descricao: ''
   }
 
-  constructor(private service: CategoriaService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {}
+  dialogRef: MatDialogRef<CategoriaDeleteDialogComponent>;
+
+  constructor(private service: CategoriaService, private route: ActivatedRoute, 
+              private router: Router, private toastr: ToastrService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
       this.categoria.id = this.route.snapshot.paramMap.get('id');
@@ -30,6 +35,20 @@ export class CategoriaDeleteComponent implements OnInit {
       this.categoria.descricao = response.descricao;
     });
   }
+
+  openDialog(): void {
+    this.dialogRef = this.dialog.open(CategoriaDeleteDialogComponent, {
+      data: {
+        titulo: this.categoria.nome,
+      }
+    });
+    this.dialogRef.afterClosed().subscribe(result => {
+      if(result){
+      this.delete();
+      }
+    });
+  }
+
 
   delete(): void {
     this.service.delete(this.categoria.id).subscribe((response) => {

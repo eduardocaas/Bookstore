@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Remover categoria</h1>
+<div mat-dialog-content>
+  Você deseja remover a categoria {{(data.titulo).toUpperCase()}}?
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="dialogRef.close(false)">Não</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="dialogRef.close(true)">Sim</button>
+</div>
+
+
