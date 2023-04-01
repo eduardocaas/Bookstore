@@ -11,7 +11,7 @@ export class NavComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-      this.router.navigate(['livros/delete/1/2']);
+      this.router.navigate(['home']);
   }
 
 }
